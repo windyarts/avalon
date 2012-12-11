@@ -3,7 +3,15 @@
   "name": "myapp",
   "version": "0.0.0",
   "dependencies": {
-    "grunt-shell": "~0.1.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt-shell": ">=0.1.4",
+    "testacular": ">=0.5.6",
+    "grunt": "*"
+  },
+  "scripts": {
+    "start": "yeoman server:app",
+    "test": "./node_modules/testacular/bin/testacular start --single-run --browsers=PhantomJS",
+    "test_daemon": "./node_modules/testacular/bin/testacular start"
+  }
 }

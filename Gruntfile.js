@@ -98,24 +98,10 @@ module.exports = function( grunt ) {
       ]
     },
 
-    // Bootstrap configuration
-    // -------------------
-
     shell: {
-        bootstrap_build: {
-            command: 'make bootstrap',
-            execOptions: {
-                cwd: 'bootstrap'
-            }
-        },
-        bootstrap_copy: {
-            command: 'cp bootstrap/bootstrap/img/* app/images/; cp bootstrap/bootstrap/css/bootstrap.css app/styles/_bootstrap.scss; cp bootstrap/bootstrap/css/bootstrap-responsive.css app/styles/_bootstrap-responsive.scss'
-        },
-        bootstrap_clean: {
-            command: 'make clean',
-            execOptions: {
-                cwd: 'bootstrap'
-            }
+        testacular: {
+            command: 'node_modules/testacular/bin/testacular start --single-run --browsers=PhantomJS',
+            stdout: true
         }
     },
 
@@ -197,9 +183,6 @@ module.exports = function( grunt ) {
     }
   });
 
-  // Alias the `test` task to run the `mocha` task instead
-  // grunt.registerTask('test', 'server:phantom mocha');
-
-  grunt.registerTask('build_bootstrap', 'shell:bootstrap_build shell:bootstrap_copy shell:bootstrap_clean');
+  grunt.registerTask('test', 'shell:testacular');
 
 };
